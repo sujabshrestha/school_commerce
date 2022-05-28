@@ -30,7 +30,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="card-title font-weight-bold">Edit {{ $category->title ?? '' }}</h3>
+                        <h3 class="card-title font-weight-bold">Edit {{ $product->title ?? '' }}</h3>
                     </div>
 
 
@@ -41,9 +41,9 @@
             </div>
             <div class="card-body p-0">
                 <div class="col-md-12">
-                    <form action="{{ route('admin.category.update', $category->id) }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.product.update', $product->id) }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                     @include('pages.admin.category.commonform')
+                     @include('pages.admin.product.commonform')
                         <div class="sub-button float-right mt-3 mb-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>

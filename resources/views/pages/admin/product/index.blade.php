@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <h3 class="card-title">All Products</h3>
-                        <a href="{{-- route('backend.propertydetails.add') --}}" class="btn btn-primary float-right">Add New
+                        <a href="{{ route('admin.product.index') }}" class="btn btn-primary float-right">Add New
                         </a>
 
                     </div>
@@ -96,48 +96,51 @@
                                 #
                             </th>
                             <th style="width: 20%">
-                                Category
+                                Product
                             </th>
                             <th style="width: 30%">
-                                Status
+                                Category
                             </th>
                             <th>
-                                Logo
+                                Image
                             </th>
-
+                            <th>
+                                Price
+                            </th>
                             <th style="width: 20%">
                                 Action
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        @if (isset($categories) && !empty($categories))
-                            @foreach ($categories as $category)
+                        @if (isset($products) && !empty($products))
+                            @foreach ($products as $product)
                                 <tr>
                                     <td>
                                         {{ $loop->iteration }}
                                     </td>
                                     <td>
                                         <a>
-                                            {{ $category->title }}
+                                            <span class="text-capitalize">
+                                                {{ $product->title }}
+
+                                            </span>
                                         </a>
                                         <br />
-                                        <small>{{ $category->created_at->format('Y-m-d') }}</small>
+                                        <small>{{ $product->created_at->format('Y-m-d') }}</small>
 
                                     </td>
                                     <td>
-                                        <span class="badge @if ($category->status == 'active')
-                                            badge-success
-                                        @else
-                                            badge-danger
-                                        @endif   p-2 text-capitalize">
-                                            {{ $category->status }}
+                                        <span class="badge badge-success">
+                                            {{ $product->category->title }}
                                         </span>
                                     </td>
                                     <td>
-                                       <img src="{{ $category->logo ? getImageUrl($category->logo) : "" }}" style="height: 100px; object-fit:cover;" alt="">
+                                       <img src="{{ $product->feature_img ? getImageUrl($product->feature_img) : "" }}" style="height: 100px; object-fit:cover;" alt="">
                                     </td>
-
+                                    <td>
+                                        Rs. {{ $product->price }}
+                                    </td>
 
                                     <td class="project-actions text-left">
                                         {{-- <a class="btn btn-primary btn-sm"
@@ -148,13 +151,13 @@
                                         </a> --}}
 
                                         <a class="btn btn-info btn-sm"
-                                            href="{{ route('admin.category.edit', $category->id) }}">
+                                            href="{{ route('admin.product.edit', $product->id) }}">
                                             <i class="fas fa-pencil-alt">
                                             </i>
                                             Edit
                                         </a>
                                         <a class="btn btn-danger btn-sm"
-                                            href="{{ route('admin.category.delete', $category->id) }}">
+                                            href="{{ route('admin.product.delete', $product->id) }}">
                                             <i class="fas fa-trash">
                                             </i>
                                             Delete
@@ -164,7 +167,7 @@
                             @endforeach
                         @else
                             <div class="noplotdetail-section text-center mt-2">
-                                <h1>No any plot details</h1>
+                                <h1>No any products</h1>
                             </div>
                         @endif
 

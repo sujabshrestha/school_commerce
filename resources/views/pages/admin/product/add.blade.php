@@ -30,7 +30,7 @@
             <div class="card-header">
                 <div class="row">
                     <div class="col-md-6">
-                        <h3 class="card-title">Add Categories</h3>
+                        <h3 class="card-title">Add Products</h3>
                     </div>
 
 
@@ -41,9 +41,9 @@
             </div>
             <div class="card-body p-0">
                 <div class="col-md-12">
-                    <form action="{{ route('admin.category.submit') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('admin.product.submit') }}" method="POST" enctype="multipart/form-data">
                         @csrf
-                     @include('pages.admin.category.commonform')
+                     @include('pages.admin.product.commonform')
                         <div class="sub-button float-right mt-3 mb-2">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
@@ -56,3 +56,21 @@
 
     </section>
 @endsection
+
+
+@push('scripts')
+<script>
+    $('.logo-change').change(function(){
+           currentthis = $(this);
+           let reader = new FileReader();
+
+           reader.onload = (e) => {
+             currentthis.siblings('img').attr('src', e.target.result);
+           }
+
+           reader.readAsDataURL(this.files[0]);
+
+       });
+</script>
+
+@endpush

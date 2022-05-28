@@ -31,7 +31,7 @@
             "Database\\Seeders\\": "database/seeders/"
         },
         "files": [
-
+            "app/GlobalServices/ResponseService.php",
             "app/Helpers/helper.php"
 
         ]

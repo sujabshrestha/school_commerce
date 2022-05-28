@@ -29,7 +29,7 @@
     </div>
     <div class="col-md-12">
         <label for="">Description</label>
-        <textarea name="desc" class="summernote">{!! $category->desc !!}</textarea>
+        <textarea name="desc" class="summernote">{!!  $category->desc ?? '' !!}</textarea>
     </div>
 
 </div>
