@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <h3 class="card-title">All Categories</h3>
-                        <a href="{{-- route('backend.propertydetails.add') --}}" class="btn btn-primary float-right">Add New
+                        <a href="{{ route('admin.category.create') }}" class="btn btn-primary float-right">Add New
                         </a>
 
                     </div>

@@ -31,7 +31,7 @@
                 <div class="row">
                     <div class="col-lg-12 ">
                         <h3 class="card-title">All Products</h3>
-                        <a href="{{ route('admin.product.index') }}" class="btn btn-primary float-right">Add New
+                        <a href="{{ route('admin.product.create') }}" class="btn btn-primary float-right">Add New
                         </a>
 
                     </div>

@@ -52,3 +52,20 @@ Route::group([
 
     // Route::post('/productbyprice','ApiProductController@productByPrice')->name('productByPrice');
 });
+
+
+
+Route::group([
+    'prefix' => 'order',
+    // 'middleware' => 'auth:api',
+    'namespace' => 'App\Http\Controllers\Api'
+], function() {
+    Route::post('/submit','ApiOrderController@orderSubmit')->name('submit');
+
+    Route::get('/getorderbyid/{id}','ApiOrderController@getOrderByID')->name('getorderbyid');
+
+    Route::get('/getorderbycode/{code}','ApiOrderController@getOrderByCode')->name('getOrderByCode');
+
+
+});
+
