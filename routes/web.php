@@ -27,6 +27,8 @@ Route::group([
 
     Route::get('dashboard', 'AuthController@dashboard')->name('dashboard');
 
+    Route::get('logout', 'AuthController@logout')->name('logout');
+
 
     Route::group([
         'prefix' => 'category',
@@ -69,6 +71,22 @@ Route::group([
 
     });
 
+
+
+    Route::group([
+        'prefix' => 'order',
+        // 'middleware' =>
+        'as' => 'order.'
+    ], function(){
+
+        Route::get('all', 'OrderController@allOrders')->name('allOrders');
+
+        Route::get('vieworder/{id}', 'OrderController@viewOrder')->name('viewOrder');
+
+        Route::get('changestatus/{id}', 'OrderController@changeStatus')->name('changeStatus');
+
+
+    });
 
 
 

@@ -3,6 +3,9 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
 use App\Models\User;
 use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Http\Request;
@@ -50,11 +53,29 @@ class AuthController extends Controller
 
     public function dashboard(){
         try{
-            return view('pages.admin.dashboard');
+
+            $totalproduct = Product::count();
+            $totalcategory = Category::count();
+            $totalorders = Order::count();
+
+            return view('pages.admin.dashboard', compact('totalproduct','totalcategory', 'totalorders'));
 
         }catch(\Exception $e){
             Toastr::error($e->getMessage());
             return redirect()->back();
         }
     }
+
+
+    public function logout(){
+    try{
+        Auth::logout();
+        return redirect()->route('admin.login');
+
+    }catch(\Exception $e){
+        Toastr::error($e->getMessage());
+        return redirect()->back();
+    }
+}
+
 }
